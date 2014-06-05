@@ -30,10 +30,6 @@ Or install it yourself as:
 
     $ gem install sidekiq-cleaner
 
-## Usage
-
-TODO: Write usage instructions here
-
 ## Contributing
 
 1. Fork it ( http://github.com/<my-github-username>/sidekiq-cleaner/fork )
