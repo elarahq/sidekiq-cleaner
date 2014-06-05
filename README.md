@@ -4,15 +4,19 @@ Sidekiq cleaner makes exploring dead job queue easier. It breaks down
 the failures by time window of hours and days. It allows retrying
 or deleting a certain subset of failures.
 
-Failures are also classified based on the error type. A screenshot of the
-errors categorized based on the task is below
+Queue based failure classification
 
-![Sidekiq Cleaner](screenshot.png)
+![Sidekiq Cleaner](Demo1.png)
 
-Click on the error counts to break down to classify the
-number of failures per error class as shown in the image below
+For each queue, you can drill down to view failure distribution based on
+error types.
 
-![Sidekiq Cleaner](screenshot-error.png)
+![Sidekiq Cleaner](Demo2.png)
+
+Finally, click on the individual error counts to display details of the
+errors in a list form.
+
+![Sidekiq Cleaner](Demo3.png)
 
 #### NOTE: This gem requires Sidekiq > 3.0
 
