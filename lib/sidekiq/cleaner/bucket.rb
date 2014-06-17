@@ -21,7 +21,7 @@ module Sidekiq
             end
           end
 
-          return nil
+          return '7_days'
         end
       end
     end

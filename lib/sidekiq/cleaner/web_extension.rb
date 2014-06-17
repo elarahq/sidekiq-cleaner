@@ -4,6 +4,36 @@ module Sidekiq
       def self.registered(app)
         view_path = File.join(File.expand_path("..", __FILE__), "views")
 
+
+        app.post "/cleaner" do
+          throw :halt, 404 unless params['key']
+          params['key'].each do |key|
+            job = Sidekiq::DeadSet.new.fetch(*parse_params(key)).first
+            if job
+              if params['retry']
+                job.retry
+              elsif params['delete']
+                job.delete
+              end
+            end
+          end
+          redirect request.referer
+        end
+
+        app.post "/cleaner/:key" do
+          throw :halt, 404 unless params['key']
+
+          job = Sidekiq::DeadSet.new.fetch(*parse_params(params['key'])).first
+          if job
+            if params['retry']
+              job.retry
+            elsif params['delete']
+              job.delete
+            end
+          end
+          redirect request.referer
+        end
+
         app.post "/cleaner/:failure_class/:error_class/:bucket_name/delete" do
           @dead,
           @req_failure_class,

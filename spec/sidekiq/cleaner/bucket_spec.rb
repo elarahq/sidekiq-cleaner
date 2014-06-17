@@ -9,7 +9,7 @@ module Sidekiq::Cleaner
     end
 
     describe ".for_elapsed_time" do
-      let(:expectation) { ["1_hour", "3_hours", "1_day", "3_days", "7_days", nil] }
+      let(:expectation) { ["1_hour", "3_hours", "1_day", "3_days", "7_days", "7_days"] }
       let(:elapsed_times) { [1, 3601, 10801, 86401, 259201, 604801] }
 
       it "maps elapsed_time to bucket name" do
