@@ -3,13 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'sidekiq/cleaner/version'
 
-gem_version = Sidekiq::Cleaner::VERSION.dup
-if ENV.has_key?( 'BUILD_NUMBER' )
-  gem_version << ".#{ENV['BUILD_NUMBER']}"
-else
-  gem_version << '.99999'
-end
-
+gem_version = Sidekiq::Cleaner::VERSION
 
 Gem::Specification.new do |spec|
   spec.name          = "sidekiq-cleaner"
